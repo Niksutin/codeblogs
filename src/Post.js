@@ -4,24 +4,28 @@ import './Button.css';
 export default class Post extends Component {
   constructor(props) {
     super(props);
-    this.title = props.title;
+    this.index = props.index;
+    this.title = "";
     this.text = props.children;
-    this.editPost = this.editPost.bind(this);
-    this.savePost = this.savePost.bind(this);
+    this.editPost = props.editPost;
+    this.removePost = props.removePost;
+    this.editClicked = this.editClicked.bind(this);
+    this.saveClicked = this.saveClicked.bind(this);
+    this.deleteClicked = this.deleteClicked.bind(this);
     this.state = {editing: false};
   }
 
-  editPost() {
+  editClicked() {
     this.setState({editing: true});
   }
 
-  deletePost() {
-    alert("Post deleted!");
+  deleteClicked() {
+    this.removePost(this.index);
   }
 
-  savePost() {
-    let text = this.refs.newText.value;
-    console.log(text);
+  saveClicked() {
+    console.log(this.refs.newText.value);
+    this.editPost(this.refs.newText.value, this.id);
     this.setState({editing: false});
   }
 
@@ -30,8 +34,8 @@ export default class Post extends Component {
       <div>
         <h1>{this.title}</h1>
         <p>{this.text}</p>
-        <button onClick={this.editPost} className="PostButton" id="edit">Edit</button>
-        <button onClick={this.deletePost} className="PostButton" id="delete" >Delete</button>
+        <button onClick={this.editClicked} className="PostButton" id="edit">Edit</button>
+        <button onClick={this.deleteClicked} className="PostButton" id="delete" >Delete</button>
       </div>
     );
   }
@@ -41,8 +45,8 @@ export default class Post extends Component {
       <div>
         <h1>{this.title}</h1>
         <textarea ref="newText" defaultValue={this.text}/>
-        <button onClick={this.savePost} className="PostButton" id="save">Save</button>
-        <button onClick={Post.deletePost} className="PostButton" id="delete" >Delete</button>
+        <button onClick={this.saveClicked} className="PostButton" id="save">Save</button>
+        <button onClick={this.deleteClicked} className="PostButton" id="delete" >Delete</button>
       </div>
     );
   }

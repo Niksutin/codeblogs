@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Post from './Post.js';
 import Menu from "./Menu";
+import Board from './Board.js';
 import './App.css';
 
 class App extends Component {
@@ -11,8 +11,7 @@ class App extends Component {
           <Menu title="Codeblogs"/>
         </header>
         <div className="App-posts">
-          <Post title="JavaScript basics!">Javascript is a programming language.</Post>
-          <Post title="HTML struggling...">HTML is short from Hyper Text Markup Language!</Post>
+          <Board/>
         </div>
       </div>
     );
