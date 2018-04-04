@@ -11,6 +11,7 @@ export default class Board extends Component {
     this.add = this.add.bind(this);
     this.removePost = this.removePost.bind(this);
     this.editPost = this.editPost.bind(this);
+    this.testDataInject = this.testDataInject.bind(this);
   }
 
   componentDidMount() {
@@ -23,8 +24,19 @@ export default class Board extends Component {
           return post.content;
         });
         this.setState({posts: fetchedPosts});
-      });
+      }).catch(this.testDataInject());
   }
+
+  testDataInject() {
+    console.log("Error occurred in fetching data!");
+    let testPosts = [
+      "Test1",
+      "Test2",
+      "Test3"
+    ];
+    this.setState({posts: testPosts});
+  }
+
 
   add(text) {
     let array = this.state.posts;
