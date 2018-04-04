@@ -1,0 +1,19 @@
+textarea {
+  width: 50em;
+  height: 20em;
+  border: 1px solid lime;
+  border-radius: 8px;
+  color: lime;
+
+  font-family: 'Press Start 2P', cursive;
+  background-color: black;
+  padding: 1em;
+  outline: none;
+  resize: none;
+}
+
+p {
+  background-color: black;
+  color: lime;
+  display: inline-block;
+}
