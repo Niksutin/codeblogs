@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Post from './Post.js';
+import SearchBar from './SearchBar.js';
 import './styles/Board.css';
 
 export default class Board extends Component {
@@ -7,11 +8,13 @@ export default class Board extends Component {
     super(props);
     this.state = {
       posts: [],
+      searchText: ''
     };
     this.add = this.add.bind(this);
     this.removePost = this.removePost.bind(this);
     this.editPost = this.editPost.bind(this);
     this.testDataInject = this.testDataInject.bind(this);
+    this.searchPost = this.searchPost.bind(this);
   }
 
   componentDidMount() {
@@ -56,9 +59,16 @@ export default class Board extends Component {
     this.setState({posts: array});
   }
 
+  searchPost(text) {
+    console.log(text);
+    this.setState({searchText: text});
+  }
+
   render() {
     return (
         <div>
+          <SearchBar searchPost={this.searchPost}/>
+          <br/>
           <button onClick={this.add.bind(null, 'Default text')} className="PostButton" id="add">Add</button>
           { this.state.posts.map((text, i) => {
             return (
