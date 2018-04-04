@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import './Button.css';
+import './styles/Button.css';
+import './styles/Post.css';
 
 export default class Post extends Component {
   constructor(props) {
     super(props);
-    this.index = props.index;
-    this.title = "";
-    this.text = props.children;
-    this.editPost = props.editPost;
-    this.removePost = props.removePost;
     this.editClicked = this.editClicked.bind(this);
     this.saveClicked = this.saveClicked.bind(this);
     this.deleteClicked = this.deleteClicked.bind(this);
-    this.state = {editing: false};
+    this.state = {
+      index: props.index,
+      text: props.text,
+      title: props.title,
+      editPost: props.editPost,
+      removePost: props.removePost,
+      editing: props.editing
+    };
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({text: props.text,
+                  title: props.title});
   }
 
   editClicked() {
@@ -20,20 +28,22 @@ export default class Post extends Component {
   }
 
   deleteClicked() {
-    this.removePost(this.index);
+    console.log(this.state.index, " delete clicked");
+    this.state.removePost(this.state.index);
   }
 
   saveClicked() {
-    console.log(this.refs.newText.value);
-    this.editPost(this.refs.newText.value, this.id);
+    this.state.editPost(this.refs.newText.value,this.refs.newTitle.value, this.state.index);
     this.setState({editing: false});
   }
 
   renderNormal() {
     return (
       <div>
-        <h1>{this.title}</h1>
-        <p>{this.text}</p>
+        <h1>{this.state.title}</h1>
+        <br/>
+        <p>{this.state.text}</p>
+        <br/>
         <button onClick={this.editClicked} className="PostButton" id="edit">Edit</button>
         <button onClick={this.deleteClicked} className="PostButton" id="delete" >Delete</button>
       </div>
@@ -43,10 +53,11 @@ export default class Post extends Component {
   renderForm() {
     return (
       <div>
-        <h1>{this.title}</h1>
-        <textarea ref="newText" defaultValue={this.text}/>
+        <textarea ref="newTitle" className="title" defaultValue={this.state.title}/>
+        <br/>
+        <textarea ref="newText" className="text" defaultValue={this.state.text}/>
+        <br/>
         <button onClick={this.saveClicked} className="PostButton" id="save">Save</button>
-        <button onClick={this.deleteClicked} className="PostButton" id="delete" >Delete</button>
       </div>
     );
   }

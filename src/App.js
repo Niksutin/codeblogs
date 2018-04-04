@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menu from "./Menu";
 import Board from './Board.js';
-import './App.css';
+import './styles/App.css';
 
 class App extends Component {
   render() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Button.css';
+import './styles/Button.css';
+import './styles/Menu.css';
 
 export default class Menu extends Component {
   constructor(props) {
