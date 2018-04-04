@@ -10,16 +10,17 @@ export default class Post extends Component {
     this.deleteClicked = this.deleteClicked.bind(this);
     this.state = {
       index: props.index,
-      editing: false,
-      text: props.children,
-      title: "Default",
+      text: props.text,
+      title: props.title,
       editPost: props.editPost,
-      removePost: props.removePost
-      };
+      removePost: props.removePost,
+      editing: props.editing
+    };
   }
 
   componentWillReceiveProps(props) {
-    this.setState({text: props.children})
+    this.setState({text: props.text,
+                  title: props.title});
   }
 
   editClicked() {
@@ -27,12 +28,12 @@ export default class Post extends Component {
   }
 
   deleteClicked() {
+    console.log(this.state.index, " delete clicked");
     this.state.removePost(this.state.index);
   }
 
   saveClicked() {
-    console.log(this.refs.newText.value);
-    this.state.editPost(this.refs.newText.value, this.state.index);
+    this.state.editPost(this.refs.newText.value,this.refs.newTitle.value, this.state.index);
     this.setState({editing: false});
   }
 
@@ -40,6 +41,7 @@ export default class Post extends Component {
     return (
       <div>
         <h1>{this.state.title}</h1>
+        <br/>
         <p>{this.state.text}</p>
         <br/>
         <button onClick={this.editClicked} className="PostButton" id="edit">Edit</button>
@@ -51,8 +53,9 @@ export default class Post extends Component {
   renderForm() {
     return (
       <div>
-        <h1>{this.state.title}</h1>
-        <textarea ref="newText" defaultValue={this.state.text}/>
+        <textarea ref="newTitle" className="title" defaultValue={this.state.title}/>
+        <br/>
+        <textarea ref="newText" className="text" defaultValue={this.state.text}/>
         <br/>
         <button onClick={this.saveClicked} className="PostButton" id="save">Save</button>
       </div>
