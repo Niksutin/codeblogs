@@ -4,21 +4,21 @@ import Post from './Post';
 const PostList = (props) => {
   const posts = props.posts.map((post) => {
     return (
-      <Post
-        addClicked={post.addClicked}
-        deleteClicked={post.deleteClicked}
-        key={post.id}
-        title={post.title}
-        content={post.content}
-        writer={post.writer}
-        date={post.date} />
+        <Post
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            content={post.content}
+            writer={post.writer}
+            date={post.date}
+            commentCount={post.comments.length} />
     )
   });
 
   return (
-    <div>
-      {posts}
-    </div>
+      <div className='col-md-4 list-group'>
+        {posts}
+      </div>
   );
 };
 
