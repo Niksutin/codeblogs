@@ -1,5 +1,8 @@
+html {
+  background-color: #7c8d89;
+}
 .App {
-  text-align: center;
+
 }
 
 .App-logo {
@@ -8,18 +11,81 @@
 }
 
 .App-header {
-  background-color: #222;
+  text-align: center;
+  background-color: #343c3a;
   height: 150px;
-  padding: 20px;
+  padding: 15px;
   color: white;
+  margin-bottom: 25px;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 .App-intro {
   font-size: large;
+}
+.postList-container {
+  min-height: 600px;
+}
+.post-container {
+  max-width: 800px;
+  width: 100%;
+  padding: 10px;
+  margin: auto;
+}
+.Post {
+  overflow-wrap: break-word;
+  background: #e9edec;
+  text-align: left;
+  margin: auto;
+  padding: 15px;
+  width: 100%;
+}
+.Post:hover {
+  background-color: #d1d5d4;
+}
+.Post-title {
+  font-size: 2em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.Post-tag-container {
+  font-size: 1.25em;
+  margin-bottom: 15px;
+}
+.Post-tag-container > * {
+  margin-right: 5px;
+}
+.Post-footer-item {
+  margin-right: 15px;
+  display: inline-block;
+}
+.Post-footer-item > *{
+  float: left;
+}
+.post-like {
+  margin-right: 15px;
+  float: right;
+}
+.post-like > *{
+  display: inline-block;
+  float: left;
+  margin: 5px 5px 5px 5px;
+}
+.app-footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  margin-top: 25px;
+  background-color: #7c8d89;
+}
+.form {
+  border: 1px solid lightgray;
+  padding: 10px;
+  box-shadow: 5px 10px 8px #888888;
 }
 
 @keyframes App-logo-spin {
