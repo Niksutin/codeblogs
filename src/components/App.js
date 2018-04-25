@@ -54,7 +54,9 @@ class App extends Component {
       this.state.posts.map((post) => {
         if (this.doesContain(term, post)) {
           newPosts.push(post);
+          return true;
         }
+        return false;
       });
       this.setState({ visiblePosts: newPosts });
     } else {

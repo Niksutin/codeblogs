@@ -12,18 +12,19 @@ export default class Post extends Component {
       writer: props.writer,
       date: props.date,
       commentCount: props.commentCount,
+      likeCount: props.likeCount,
       showComments: false,
       comments: []
     };
     this.commentsClicked = this.commentsClicked.bind(this);
     this.fetchComments = this.fetchComments.bind(this);
+    this.likeClicked = this.likeClicked.bind(this);
   }
 
   fetchComments() {
     let url = `http://localhost:8080/posts/${this.id}/comments`;
     fetch(url)
         .then(results => {
-          console.log(results, '>resuslts');
           return results.json();
         }).then(data => {
       console.log('comments ', data);
@@ -33,12 +34,20 @@ export default class Post extends Component {
     });
   }
 
+  likeClicked() {
+    let url = `http://localhost:8080/posts/${this.id}/like`;
+    fetch(url, {
+      method: 'POST'
+    }).then(res => res.json())
+      .then(res => { this.setState({ likeCount: res}) })
+      .catch(error => console.log('Request failure: ', error))
+  }
+
   commentsClicked() {
-    console.log(this.props);
     if (this.state.showComments === false) {
       this.fetchComments();
     } else {
-      this.setState( { comments:[] } );
+      this.setState({ comments: [] });
     }
     this.setState({ showComments: !this.state.showComments });
   }
@@ -49,9 +58,10 @@ export default class Post extends Component {
           <div>
             <h1>{this.state.title}</h1>
             <p>{this.state.content}</p>
-            <p>{this.state.writer}</p>
-            <p>{this.state.date}</p>
-            <p>{this.state.commentCount}</p>
+            <p>Writer: {this.state.writer}</p>
+            <p>Date: {this.state.date}</p>
+            <p>Comments: {this.state.commentCount}</p>
+            <p>Likes: {this.state.likeCount}</p>
             <button onClick={this.commentsClicked}>Comments</button>
             <br/>
             <CommentList comments={this.state.comments}/>
@@ -65,7 +75,7 @@ export default class Post extends Component {
             <p>Writer: {this.state.writer}</p>
             <p>Date: {this.state.date}</p>
             <p>Comments: {this.state.commentCount}</p>
-            <p>Likes: {this.state.likeCount}</p>
+            <p>Likes: {this.state.likeCount} <button onClick={this.likeClicked}>Like</button></p>
             <button onClick={this.commentsClicked}>Comments</button>
             <br/>
           </div>

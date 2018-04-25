@@ -11,7 +11,8 @@ const PostList = (props) => {
             content={post.content}
             writer={post.writer}
             date={post.date}
-            commentCount={post.comments.length} />
+            commentCount={post.comments.length}
+            likeCount={post.likes}/>
     )
   });
 
