@@ -47,10 +47,10 @@ export default class Post extends Component {
   renderMin() {
     return (
       <Row>
-        <div className="post-container">
+        <div onClick={this.commentsClicked} className="post-container">
           <div className="Post">
             <div>
-              <h1 className="Post-title">{this.state.title}</h1>
+              <h2 className="Post-title">{this.state.title}</h2>
               <div className="Post-tag-container">
                 <Badge color="secondary">Java</Badge>
                 <Badge color="secondary">MySQL</Badge>
@@ -66,11 +66,11 @@ export default class Post extends Component {
             </div>
             <div className="Post-footer-item">
               <i className="material-icons">chat_bubble_outline</i>
-              <p>16</p>
+              <p>{this.state.commentCount}</p>
+            </div>
             <div className="Post-footer-item">
               <i className="material-icons">thumb_up</i>
               <p>46</p>
-            </div>
             </div>
           </div>
         </div>
@@ -83,9 +83,9 @@ export default class Post extends Component {
     return (
       <Row>
         <div className="post-container">
-          <div className="Post">
+          <div onClick={this.commentsClicked} className="Post">
             <div>
-              <h1 className="Post-title">{this.state.title}</h1>
+              <h2 className="Post-title">{this.state.title}</h2>
               <div className="Post-tag-container">
                 <Badge color="secondary">Java</Badge>
                 <Badge color="secondary">MySQL</Badge>
@@ -102,14 +102,32 @@ export default class Post extends Component {
               <i className="material-icons">query_builder</i>
               <p>{this.state.date}</p>
             </div>
-            <div className="Post-footer-item">
-              <i className="material-icons">chat_bubble_outline</i>
-              <p>16</p>
-            </div>
-            <button className="post-like">
+            <Button className="post-like">
                 <i className="material-icons">thumb_up</i>
                 <p>46</p>
-            </button>
+            </Button>
+          </div>
+          <div className="comment-container">
+            <div className="post-comments-title">
+              <h5>Response to "{this.state.title}"</h5>
+            </div>
+            <Form >
+              <FormGroup>
+                <Label for="comment-writer">Name</Label>
+                <Input className="comment-writer" type="username" name="comment-writer" id="comment-writer"/>
+              </FormGroup>
+              <FormGroup>
+                <Label for="comment">Your comment</Label>
+                <Input className="comment-input" type="textarea" name="comment" id="comment"/>
+              </FormGroup>
+              <Button>Send</Button>
+            </Form>
+          </div>
+          <div className="post-comments-title">
+            <h5>{this.state.commentCount} responses to "{this.state.title}"</h5>
+          </div>
+          <div className="post-comments">
+            <CommentList comments={this.state.comments} />
           </div>
         </div>
       </Row>
@@ -140,6 +158,10 @@ export default class Post extends Component {
   }
 
   render() {
-    return this.renderExpanded();
+    if (this.state.showComments) {
+      return this.renderExpanded();
+    } else {
+      return this.renderMin();
+    }
   }
 }

@@ -1,94 +1,109 @@
 html {
-  background-color: #7c8d89;
+    background-color: #7c8d89;
 }
 .App {
 
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  text-align: center;
-  background-color: #343c3a;
-  height: 150px;
-  padding: 15px;
-  color: white;
-  margin-bottom: 25px;
+    text-align: center;
+    background-color: #343c3a;
+    height: 150px;
+    padding: 15px;
+    color: white;
+    margin-bottom: 25px;
 }
 
 .App-title {
-  font-size: 2em;
+    font-size: 3em;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
 }
 .postList-container {
-  min-height: 600px;
+    min-height: 600px;
 }
 .post-container {
-  max-width: 800px;
-  width: 100%;
-  padding: 10px;
-  margin: auto;
+    max-width: 800px;
+    width: 100%;
+    padding: 10px;
+    margin: auto;
 }
 .Post {
-  overflow-wrap: break-word;
-  background: #e9edec;
-  text-align: left;
-  margin: auto;
-  padding: 15px;
-  width: 100%;
+    overflow-wrap: break-word;
+    background: #e9edec;
+    text-align: left;
+    margin: auto;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 1px 2px 2px #888888;
 }
 .Post:hover {
-  background-color: #d1d5d4;
+    background-color: #d1d5d4;
 }
 .Post-title {
-  font-size: 2em;
-  margin-top: 5px;
-  margin-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .Post-tag-container {
-  font-size: 1.25em;
-  margin-bottom: 15px;
+    font-size: 1.25em;
+    margin-bottom: 15px;
 }
 .Post-tag-container > * {
-  margin-right: 5px;
+    margin-right: 5px;
 }
 .Post-footer-item {
-  margin-right: 15px;
-  display: inline-block;
+    margin-right: 15px;
+    display: inline-block;
 }
 .Post-footer-item > *{
-  float: left;
+    float: left;
 }
 .post-like {
-  margin-right: 15px;
-  float: right;
+    margin-right: 15px;
+    float: right;
 }
 .post-like > *{
-  display: inline-block;
-  float: left;
-  margin: 5px 5px 5px 5px;
+    display: inline-block;
+    float: left;
+    margin: 5px 5px 5px 5px;
 }
 .app-footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-  margin-top: 25px;
-  background-color: #7c8d89;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    margin-top: 25px;
+    background-color: #7c8d89;
 }
 .form {
-  border: 1px solid lightgray;
-  padding: 10px;
-  box-shadow: 5px 10px 8px #888888;
+    border: 1px solid lightgray;
+    padding: 10px;
+    box-shadow: 5px 10px 8px #888888;
 }
-
+.post-comments-title {
+    margin-top: 15px;
+}
+.comment-container {
+    border: 1px solid lightgray;
+    padding: 10px;
+    box-shadow: 1px 2px 2px #888888;
+    margin: 20px;
+}
+.comment-writer {
+    max-width: 50%;
+}
+.comment-input {
+    height: 100px;
+    resize: none;
+}
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
