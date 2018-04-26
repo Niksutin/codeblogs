@@ -44,6 +44,17 @@ html {
     width: 100%;
     box-shadow: 1px 2px 2px #888888;
 }
+
+.Post-expanded {
+    overflow-wrap: break-word;
+    background: #e9edec;
+    text-align: left;
+    margin: auto;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 1px 2px 2px #888888;
+}
+
 .Post:hover {
     background-color: #d1d5d4;
 }

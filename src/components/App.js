@@ -2,8 +2,9 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import PostList from './PostList';
 import '../styles/App.css';
-import SearchBar from "./SearchBar";
-import {Container} from "reactstrap";
+import SearchBar from './SearchBar';
+import AddPostPopup from './AddPostPopup';
+import { Container } from 'reactstrap';
 
 class App extends Component {
   constructor(props) {
@@ -17,8 +18,12 @@ class App extends Component {
 
   fetchPosts() {
     let url = 'http://localhost:8080/posts';
-    fetch(url)
-        .then(results => {
+    fetch(url, {
+      method: 'GET',
+      headers: new Headers({
+        'content-type': 'application/json'
+        }),
+      }).then(results => {
           return results.json();
         }).then(data => {
         console.log('posts ', data);
@@ -30,21 +35,27 @@ class App extends Component {
 
   addPost(post) {
     let url = 'http://localhost:8080/posts';
+    post = {
+      title: 'This is great Title',
+      content: 'bla bla bla',
+      writer: 'Rami'
+    };
     fetch(url, {
       method: 'POST',
-      headers: {
+      headers: new Headers({
         'content-type': 'application/json'
-      },
+      }),
       body: JSON.stringify({
         title: post.title,
         content: post.text,
-        writer: 'testAuthor'
+        writer: post.writer
       })
     }).then(function (post) {
       console.log('Request success: ', post);
     }).catch(function (error) {
       console.log('Request failure: ', error);
     });
+    window.location.reload();
   }
 
   searchPosts(term) {
@@ -77,6 +88,8 @@ class App extends Component {
         <header className='App-header'>
           <h1 className='App-title'>Codeblogs</h1>
           <SearchBar onSearchTermChange={searchPosts}/>
+          <br/>
+          <button onClick={this.addPost}>Add Post</button>
         </header>
         <Container className="postList-container">
         <PostList posts={this.state.visiblePosts}/>
