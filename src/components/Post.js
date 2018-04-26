@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Badge, Button, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap';
 import CommentList from './CommentList';
+import AddComment from './AddComment';
 
 export default class Post extends Component {
   constructor(props) {
@@ -22,7 +23,6 @@ export default class Post extends Component {
     this.postClicked = this.postClicked.bind(this);
     this.fetchComments = this.fetchComments.bind(this);
     this.likeClicked = this.likeClicked.bind(this);
-    this.submitComment = this.submitComment.bind(this);
     this.deleteClicked = this.deleteClicked.bind(this);
     this.editClicked = this.editClicked.bind(this);
     this.editingCancelClicked = this.editingCancelClicked.bind(this);
@@ -109,28 +109,6 @@ export default class Post extends Component {
       this.setState({ comments: [] });
     }
     this.setState({ expanded: !this.state.expanded });
-  }
-
-  submitComment(event) {
-    console.log(this.refs.commentText, ' EVENTVALUE!');
-    event.preventDefault();
-    /**
-    let url = `http://localhost:8080/posts/${this.id}/comments`;
-    let comment = {writer: 'Niko', text: 'Ihan hyvä!'};
-    fetch(url, {
-      method: 'POST',
-      headers: new Headers({
-        'content-type': 'application/json'
-      }),
-      body: JSON.stringify({
-        writer: comment.writer,
-        content: comment.text
-      })
-    }).then(function (post) {
-      console.log('Request success: ', post);
-    }).catch(function (error) {
-      console.log('Request failure: ', error);
-    });**/
   }
 
   renderEditing() {
@@ -225,19 +203,9 @@ export default class Post extends Component {
               <div className="comment-container">
                 <div className="post-comments-title">
                   <h5>Response to "{this.state.title}"</h5>
+                  <AddComment postId={this.id} />
+                  </div>
                 </div>
-                <Form onSubmit={this.submitComment}>
-                  <FormGroup>
-                    <Label for="comment-writer">Name</Label>
-                    <Input className="comment-writer" type="username" name="comment-writer" id="comment-writer"/>
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="comment">Your comment</Label>
-                    <Input className="comment-input" type="textarea" name="comment" id="comment"/>
-                  </FormGroup>
-                  <Button>Send</Button>
-                </Form>
-              </div>
               <div className="post-comments-title">
                 <h5>{this.state.commentCount} responses to "{this.state.title}"</h5>
               </div>
