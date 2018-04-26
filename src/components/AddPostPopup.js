@@ -73,7 +73,7 @@ export default class AddPostPopup extends Component {
               </FormGroup>
               <FormGroup>
                 <Label for="post-writer">Your name</Label>
-                <Input onChange={this.onChange} className="comment-writer" type="username" name="post-title" id="post-title"/>
+                <Input onChange={this.onChange} className="comment-writer" type="username" name="post-writer" id="post-writer"/>
               </FormGroup>
               <div className="add-post-buttons">
                 <Button onClick={this.editingSaveClicked}>Save</Button>
