@@ -60,7 +60,8 @@ export default class AddPostPopup extends Component {
   render() {
     if (this.state.editing) {
       return (
-          <div>
+        <div className="post-container">
+          <div className="Post-expanded">
             <Form>
               <FormGroup>
                 <Label for="post-title">Title</Label>
@@ -74,10 +75,13 @@ export default class AddPostPopup extends Component {
                 <Label for="post-writer">Your name</Label>
                 <Input onChange={this.onChange} className="comment-writer" type="username" name="post-title" id="post-title"/>
               </FormGroup>
-              <Button onClick={this.editingSaveClicked}>Save</Button>
-              <Button onClick={this.editingCancelClicked}>Cancel</Button>
+              <div className="add-post-buttons">
+                <Button onClick={this.editingSaveClicked}>Save</Button>
+                <Button onClick={this.editingCancelClicked}>Cancel</Button>
+              </div>
             </Form>
           </div>
+        </div>
       );
     } else {
       return <div></div>

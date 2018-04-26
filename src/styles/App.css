@@ -4,12 +4,11 @@ html {
 .App-header {
     text-align: center;
     background-color: #4c5754;
-    height: 150px;
+    height: 200px;
     padding: 15px;
     color: white;
     margin-bottom: 25px;
 }
-
 .App-title {
     font-size: 3em;
 }
@@ -18,8 +17,11 @@ html {
     width: 100%;
     position: relative
 }
+.add-post-buttons > * {
+    margin-right: 5px;
+}
 .postList-container {
-    min-height: 600px;
+    min-height: 800px;
 }
 .post-container {
     max-width: 800px;

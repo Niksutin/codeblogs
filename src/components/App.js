@@ -4,7 +4,7 @@ import PostList from './PostList';
 import '../styles/App.css';
 import SearchBar from './SearchBar';
 import AddPostPopup from './AddPostPopup';
-import { Container } from 'reactstrap';
+import {Button, Container} from 'reactstrap';
 
 class App extends Component {
   constructor(props) {
@@ -102,7 +102,7 @@ class App extends Component {
           <h1 className='App-title'>Codeblogs</h1>
           <SearchBar onSearchTermChange={searchPosts}/>
           <br/>
-          <button onClick={this.addingClicked}>Add Post</button>
+          <Button onClick={this.addingClicked}>Add Post</Button>
         </header>
         <Container className="postList-container">
           {this.isAdding()}
