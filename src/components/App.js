@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import logo from '../img/logo.svg';
 import PostList from './PostList';
 import '../styles/App.css';
 import SearchBar from "./SearchBar";
+import {Container} from "reactstrap";
 
 class App extends Component {
   constructor(props) {
@@ -75,16 +75,16 @@ class App extends Component {
     return (
       <div className='App'>
         <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
           <h1 className='App-title'>Codeblogs</h1>
           <SearchBar onSearchTermChange={searchPosts}/>
         </header>
-        <p className='App-intro'>
-        </p>
+        <Container className="postList-container">
         <PostList posts={this.state.visiblePosts}/>
+        </Container>
+        <div className="app-footer"/>
       </div>
     );
-  }
+}
 }
 
 export default App;

@@ -14,7 +14,7 @@ const CommentList = (props) => {
   });
 
   return (
-      <div className='col-md-4 list-group'>
+      <div>
         {comments}
       </div>
   );
