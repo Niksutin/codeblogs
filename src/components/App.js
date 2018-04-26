@@ -10,10 +10,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      adding: false,
       posts: [],
       visiblePosts: [],
     };
     this.fetchPosts();
+    this.addingClicked = this.addingClicked.bind(this);
+    this.isAdding = this.isAdding.bind(this);
   }
 
   fetchPosts() {
@@ -31,6 +34,16 @@ class App extends Component {
     }).catch(function(error) {
       console.log(error);
     });
+  }
+
+  isAdding() {
+    if (this.state.adding) {
+      return (<AddPostPopup addPost={this.addPost}/>);
+    }
+  }
+
+  addingClicked() {
+    this.setState({adding: !this.state.adding});
   }
 
   addPost(post) {
@@ -89,10 +102,11 @@ class App extends Component {
           <h1 className='App-title'>Codeblogs</h1>
           <SearchBar onSearchTermChange={searchPosts}/>
           <br/>
-          <button onClick={this.addPost}>Add Post</button>
+          <button onClick={this.addingClicked}>Add Post</button>
         </header>
         <Container className="postList-container">
-        <PostList posts={this.state.visiblePosts}/>
+          {this.isAdding()}
+          <PostList posts={this.state.visiblePosts}/>
         </Container>
         <div className="app-footer"/>
       </div>
