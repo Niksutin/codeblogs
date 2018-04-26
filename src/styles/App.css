@@ -1,5 +1,5 @@
 html {
-    background-color: #7c8d89;
+    background-color: #282e2d;
 }
 .App {
 
@@ -12,7 +12,7 @@ html {
 
 .App-header {
     text-align: center;
-    background-color: #343c3a;
+    background-color: #4c5754;
     height: 150px;
     padding: 15px;
     color: white;
@@ -35,16 +35,6 @@ html {
     padding: 10px;
     margin: auto;
 }
-.Post {
-    overflow-wrap: break-word;
-    background: #e9edec;
-    text-align: left;
-    margin: auto;
-    padding: 15px;
-    width: 100%;
-    box-shadow: 1px 2px 2px #888888;
-}
-
 .Post-expanded {
     overflow-wrap: break-word;
     background: #e9edec;
@@ -54,9 +44,26 @@ html {
     width: 100%;
     box-shadow: 1px 2px 2px #888888;
 }
-
+.Post {
+    overflow-wrap: break-word;
+    background: #e9edec;
+    text-align: left;
+    margin: auto;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 1px 2px 2px #888888;
+}
 .Post:hover {
     background-color: #d1d5d4;
+}
+.post-buttons {
+    float: right;
+}
+.post-buttons > * {
+    margin-right: 5px;
+}
+.post-title-container {
+    clear:both;
 }
 .Post-title {
     margin-top: 5px;
@@ -77,29 +84,13 @@ html {
     float: left;
 }
 .post-like {
-    margin-right: 15px;
+    margin-right: 5px;
     float: right;
 }
-.post-like > *{
+.post-like > * {
     display: inline-block;
     float: left;
     margin: 5px 5px 5px 5px;
-}
-.app-footer {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 80px;
-    margin-top: 25px;
-    background-color: #7c8d89;
-}
-.form {
-    border: 1px solid lightgray;
-    padding: 10px;
-    box-shadow: 5px 10px 8px #888888;
-}
-.post-comments-title {
-    margin-top: 15px;
 }
 .comment-container {
     border: 1px solid lightgray;
@@ -107,12 +98,28 @@ html {
     box-shadow: 1px 2px 2px #888888;
     margin: 20px;
 }
+.post-comments-title {
+    margin-top: 15px;
+}
 .comment-writer {
     max-width: 50%;
 }
 .comment-input {
     height: 100px;
     resize: none;
+}
+.app-footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    margin-top: 25px;
+    background-color: #282e2d;
+}
+.form {
+    border: 1px solid lightgray;
+    padding: 10px;
+    box-shadow: 5px 10px 8px #888888;
 }
 @keyframes App-logo-spin {
     from { transform: rotate(0deg); }

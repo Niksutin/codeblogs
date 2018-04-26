@@ -172,11 +172,19 @@ export default class Post extends Component {
       return (
           <Row>
             <div className="post-container">
-              <button onClick={this.postClicked}>Close</button>
-              <button onClick={this.deleteClicked}>Delete</button>
-              <button onClick={this.editClicked}>Edit</button>
               <div className="Post-expanded">
-                <div>
+                <div className="post-buttons">
+                  <Button onClick={this.deleteClicked}>
+                    <i className="material-icons">delete</i>
+                  </Button>
+                  <Button onClick={this.editClicked}>
+                    <i className="material-icons">mode_edit</i>
+                  </Button>
+                  <Button onClick={this.postClicked}>
+                    <i className="material-icons">close</i>
+                  </Button>
+                </div>
+                <div className="post-title-container">
                   <h2 className="Post-title">{this.state.title}</h2>
                   <div className="Post-tag-container">
                     {this.state.tags.map((tag, i) => {
