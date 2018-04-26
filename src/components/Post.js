@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Badge, Button, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap';
+import { Badge, Button, Form, FormGroup, Input, Label, Row } from 'reactstrap';
 import CommentList from './CommentList';
 import AddComment from './AddComment';
 
@@ -243,29 +243,6 @@ export default class Post extends Component {
           </Row>
       );
     }
-  }
-
-  renderLogin() {
-    return (
-      <Container>
-        <div className="row justify-content-center">
-          <div className="col-10 col-sm-7 col-md-5 col-lg-4">
-            <h1>Login</h1>
-            <Form className="form">
-              <FormGroup>
-                <Label for="username">Username</Label>
-                <Input type="username" name="username" id="username" placeholder="admin"/>
-              </FormGroup>
-              <FormGroup>
-                <Label for="password">Password</Label>
-                <Input type="password" name="password" id="password" placeholder="password"/>
-              </FormGroup>
-              <Button>Log In</Button>
-            </Form>
-          </div>
-        </div>
-      </Container>
-    );
   }
 
   render() {
