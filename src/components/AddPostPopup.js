@@ -8,6 +8,7 @@ export default class AddPostPopup extends Component {
       editing: true
     };
     this.editingSaveClicked = this.editingSaveClicked.bind(this);
+    this.editingCancelClicked = this.editingCancelClicked.bind(this);
   }
 
   editingSaveClicked(event) {
@@ -37,20 +38,28 @@ export default class AddPostPopup extends Component {
     window.location.reload();
   }
 
+  editingCancelClicked() {
+    this.setState({editing: !this.state.editing});
+  }
+
   render() {
-    return (
-        <div>
-          <form>
-            Title
-            <input ref="title" type="text"/>
-            Comment
-            <input ref="content" type="textarea"/>
-            Writer
-            <input ref="writer" type="text"/>
-            <input type="submit" onClick={this.editingSaveClicked} value="Save" />
-          </form>
-          <button onClick={this.editingCancelClicked}>Cancel</button>
-        </div>
-    );
+    if (this.state.editing) {
+      return (
+          <div>
+            <form>
+              Title
+              <input ref="title" type="text"/>
+              Comment
+              <input ref="content" type="textarea"/>
+              Writer
+              <input ref="writer" type="text"/>
+              <input type="submit" onClick={this.editingSaveClicked} value="Save" />
+            </form>
+            <button onClick={this.editingCancelClicked}>Cancel</button>
+          </div>
+      );
+    } else {
+      return <div></div>
+    }
   }
 }
