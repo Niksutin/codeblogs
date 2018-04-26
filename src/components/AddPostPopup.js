@@ -49,7 +49,7 @@ export default class AddPostPopup extends Component {
             <form>
               Title
               <input ref="title" type="text"/>
-              Comment
+              Content
               <input ref="content" type="textarea"/>
               Writer
               <input ref="writer" type="text"/>
