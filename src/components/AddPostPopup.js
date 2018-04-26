@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
+import {Form, FormGroup, Input, Button, Label} from 'reactstrap';
 
 export default class AddPostPopup extends Component {
   constructor(props) {
     super(props);
     this.state = {
       addPost: this.props.addPost,
+      title: '',
+      content: '',
+      writer: '',
       editing: true
     };
     this.editingSaveClicked = this.editingSaveClicked.bind(this);
+    this.editingCancelClicked = this.editingCancelClicked.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   editingSaveClicked(event) {
     event.preventDefault();
     let updatedPost = {
-      title: this.refs.title.value,
-      content: this.refs.content.value,
-      writer: this.refs.writer.value
+      title: this.state.title,
+      content: this.state.content,
+      writer: this.state.writer
     };
     let url = 'http://localhost:8080/posts';
     fetch(url, {
@@ -37,20 +43,44 @@ export default class AddPostPopup extends Component {
     window.location.reload();
   }
 
+  onChange(event) {
+    if (event.target.name === 'post-title') {
+      this.setState({title: event.target.value});
+    } else if (event.target.name === 'post-content') {
+      this.setState({content: event.target.value});
+    } else {
+      this.setState({writer: event.target.value});
+    }
+  }
+
+  editingCancelClicked() {
+    this.setState({editing: !this.state.editing});
+  }
+
   render() {
-    return (
-        <div>
-          <form>
-            Title
-            <input ref="title" type="text"/>
-            Comment
-            <input ref="content" type="textarea"/>
-            Writer
-            <input ref="writer" type="text"/>
-            <input type="submit" onClick={this.editingSaveClicked} value="Save" />
-          </form>
-          <button onClick={this.editingCancelClicked}>Cancel</button>
-        </div>
-    );
+    if (this.state.editing) {
+      return (
+          <div>
+            <Form>
+              <FormGroup>
+                <Label for="post-title">Title</Label>
+                <Input onChange={this.onChange} className="comment-writer" type="username" name="post-title" id="post-title"/>
+              </FormGroup>
+              <FormGroup>
+                <Label for="post-content">Post content</Label>
+                <Input onChange={this.onChange} className="comment-input" type="textarea" name="post-content" id="post-content"/>
+              </FormGroup>
+              <FormGroup>
+                <Label for="post-writer">Your name</Label>
+                <Input onChange={this.onChange} className="comment-writer" type="username" name="post-title" id="post-title"/>
+              </FormGroup>
+              <Button onClick={this.editingSaveClicked}>Save</Button>
+              <Button onClick={this.editingCancelClicked}>Cancel</Button>
+            </Form>
+          </div>
+      );
+    } else {
+      return <div></div>
+    }
   }
 }
